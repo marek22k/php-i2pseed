@@ -1,0 +1,43 @@
+Requirements
+============
+
+* A server is required that supports PHP (e.g. Apache)
+* Cron jobs can be executed
+* The I2P router runs on the same server under 127.0.0.1 without password protection
+* Java
+* Linux
+
+Installation
+============
+
+1. Paste the contents of the repository into a www-root directory and put public/ online
+2. Create yourself keys [see Generate keys]
+3. Open cronjob.php and add the address to your i2p.jar for the variable $i2pjar and the email address you used for the key generation for $signerid.
+4. Set up a cronjob so that the cronjob.php script runs regularly.
+   The more often it is executed, the more up-to-date the reseed data is.
+
+Generate keys
+=============
+
+1. Enter a private password in the private/private-2s.pw file. This can e.g. be a series of random characters.
+Go to the directory with the console and execute the following command:
+    java -cp [i2p.jar] net.i2p.crypto.SU3File keygen -t RSA_SHA512_4096 [name of public key file] private-2s.ks [email, can be a fake] < private-2s.pw
+Replace [i2p.jar] with the path to your i2p.jar file (this can be /usr/share/i2p/lib/i2p.jar, for example).
+Replace [name of public key file] with the file that stores your public key.
+You should distribute this later so that your reseed server can be used.
+Replace [email, can be a fake] with an email address. It doesn't have to be real. This is your so-called "Signer ID".
+2. Copy your public key to the public folder:
+    cp ./[name of public key file] ../public/mycert.crt
+
+Help
+====
+You can get help from me by writing to me: m.k@mk16.de or mark22k@mail.i2p
+
+License
+=======
+Copyright 2020 Marek Küthe
+This program is free software. It comes without any warranty, to
+the extent permitted by applicable law. You can redistribute it
+and/or modify it under the terms of the Do What The Fuck You Want
+To Public License, Version 2, as published by Sam Hocevar. See
+http://www.wtfpl.net/ for more details. */
