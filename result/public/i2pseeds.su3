@@ -3,9 +3,9 @@
 header("Content-Type: application/octet-stream");
 
 function gen($str, $min, $max) {
-    $l1 = [".", ":", "a", "b", "c", "d", "e", "f"];
-    $l2 = ["",  "" , "1", "2", "3", "4", "5", "6"];
-    return intval(substr(str_replace($l1, $l2, md5($_SERVER["REMOTE_ADDR"])), 0, 16) ) % ($max-$min+1)+$min;
+    $l1 = ["a", "b", "c", "d", "e", "f"];
+    $l2 = ["1", "2", "3", "4", "5", "6"];
+    return intval(substr(str_replace($l1, $l2, md5($str)), 0, 16) ) % ($max-$min+1)+$min;
 }
 
 $m = gen(substr($_SERVER["REMOTE_ADDR"], 0, 3), 16, 48);
