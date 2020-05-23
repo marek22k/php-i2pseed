@@ -2,7 +2,14 @@
 
 header("Content-Type: application/octet-stream");
 
-sleep(2);
-echo file_get_contents("../seeds/i2pseeds-". rand(1, 32) .".zip");
+function gen($str, $min, $max) {
+    $l1 = [".", ":", "a", "b", "c", "d", "e", "f"];
+    $l2 = ["",  "" , "1", "2", "3", "4", "5", "6"];
+    return intval(substr(str_replace($l1, $l2, md5($_SERVER["REMOTE_ADDR"])), 0, 16) ) % ($max-$min+1)+$min;
+}
+
+$m = gen(substr($_SERVER["REMOTE_ADDR"], 0, 3), 16, 48);
+sleep(1);
+echo file_get_contents("../seeds/i2pseeds-". gen($_SERVER["REMOTE_ADDR"], $m - 8, $m + 8)  .".su3");
 
 ?>
