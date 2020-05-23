@@ -1,0 +1,8 @@
+<?php
+
+header("Content-Type: application/octet-stream");
+
+sleep(2);
+echo file_get_contents("../seeds/i2pseeds-". rand(1, 32) .".zip");
+
+?>

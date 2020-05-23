@@ -10,24 +10,9 @@ Requirements
 Installation
 ============
 
-1. Paste the contents of the repository into a www-root directory and put public/ online
-2. Create yourself keys [see Generate keys]
-3. Open cronjob.php and add the address to your i2p.jar for the variable $i2pjar and the email address you used for the key generation for $signerid.
-4. Set up a cronjob so that the cronjob.php script runs regularly.
-   The more often it is executed, the more up-to-date the reseed data is.
-
-Generate keys
-=============
-
-1. Enter a private password in the private/private-2s.pw file. This can e.g. be a series of random characters.
-Go to the directory with the console and execute the following command:
-    java -cp [i2p.jar] net.i2p.crypto.SU3File keygen -t RSA_SHA512_4096 [name of public key file] private-2s.ks [email, can be a fake] < private-2s.pw
-Replace [i2p.jar] with the path to your i2p.jar file (this can be /usr/share/i2p/lib/i2p.jar, for example).
-Replace [name of public key file] with the file that stores your public key.
-You should distribute this later so that your reseed server can be used.
-Replace [email, can be a fake] with an email address. It doesn't have to be real. This is your so-called "Signer ID".
-2. Copy your public key to the public folder:
-    cp ./[name of public key file] ../public/mycert.crt
+1. Paste the contents of the repository into a www-root directory and put result/public/ online
+2. edit setup.rb
+3. run setup.rb in result (do not enter a password)
 
 Help
 ====
